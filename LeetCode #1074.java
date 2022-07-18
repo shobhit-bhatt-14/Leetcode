@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 class Solution {
     public int numSubmatrixSumTarget(int[][] matrix, int target) {
         int rows = matrix.length;
@@ -24,9 +26,10 @@ class Solution {
                 for (int k = 0; k < rows; k++) {
                     sum += matrix[k][j] - (i > 0 ? matrix[k][i - 1] : 0);
 
-                    ans += hmap.getOrDefault(sum - target, 0);
+                    ans += hmap.containsKey(sum - target) ? hmap.get(sum - target) : 0;
 
-                    hmap.put(sum, hmap.getOrDefault(sum, 0) + 1);
+                    int value = hmap.containsKey(sum) ? hmap.get(sum) + 1 : 1;
+                    hmap.put(sum, value);
                 }
             }
         }
