@@ -11,11 +11,9 @@ class Solution {
         List<String> ans = new ArrayList<>();
 
         pattern = changeStr(pattern, len);
-        System.out.println(pattern);
 
         for (String word : words) {
             String temp = changeStr(word, len);
-            System.out.println(temp);
 
             if (temp.equals(pattern))
                 ans.add(word);
